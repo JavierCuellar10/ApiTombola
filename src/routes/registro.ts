@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { Request, Response} from 'express';
+import path from "path";
 import { deleteItem, getItem, getItems, postItem, updateItem } from "../controlles/registro";
 
 //La constante Router es el manejador de rutas de express
@@ -16,6 +17,16 @@ router.post("/", postItem);
 router.put("/:id", updateItem);
 //Para borrar un item :)
 router.delete("/:id", deleteItem);
+
+
+// Ruta para servir archivos HTML desde la carpeta 'public'
+router.get("/html/:filename", (req, res) => {
+    const { filename } = req.params;
+    const filePath = path.join(__dirname, "../public", filename);
+  
+    res.sendFile(filePath);
+  });
+
 
 //Cada vez que se crea una constante router debemos exportarla 
 export{router};

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
+  <form id="miFormulario">
+    <label for="id">ID:</label>
+    <input type="text" id="id" name="id" required>
+
+    <label for="identificacion">Identificación:</label>
+    <input type="text" id="identificacion" name="identificacion" required>
+
+    <label for="descripcion">Descripción:</label>
+    <input type="text" id="descripcion" name="descripcion">
+
+    <label for="op1">Opcional 1:</label>
+    <input type="text" id="op1" name="op1">
+
+    <label for="op2">Opcional 2:</label>
+    <input type="text" id="op2" name="op2">
+
+    <button type="button" onclick="agregar()">Agregar</button>
+    <button type="button" onclick="eliminar()">Eliminar</button>
+    <button type="button" onclick="modificar()">Modificar</button>
+    <button type="button" onclick="buscar()">Buscar</button>
+  </form>
+</body>
+
+<script>
+    async function fetchData(url, options) {
+        const response = await fetch(url, options);
+        return response.json();
+      }
+  
+      async function agregar() {
+        const formData = new FormData(document.getElementById('miFormulario'));
+        const data = {};
+        formData.forEach((value, key) => {
+          data[key] = value;
+        });
+  
+        const response = await fetchData('http://localhost:3002/registro/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+  
+        console.log(response);
+      }
+  
+      async function eliminar() {
+        const id = document.getElementById('id').value;
+        const response = await fetchData(`http://localhost:3002/registro/${id}`, {
+          method: 'DELETE',
+        });
+  
+        console.log(response);
+      }
+  
+      async function modificar() {
+        const id = document.getElementById('id').value;
+        const formData = new FormData(document.getElementById('miFormulario'));
+        const data = {};
+        formData.forEach((value, key) => {
+          data[key] = value;
+        });
+  
+        const response = await fetchData(`http://localhost:3002/registro/${id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+  
+        console.log(response);
+      }
+  
+      async function buscar() {
+        const id = document.getElementById('id').value;
+        const response = await fetchData(`http://localhost:3002/registro/${id}`);
+  
+        console.log(response);
+      }
+</script>
+</html>
