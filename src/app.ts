@@ -3,7 +3,8 @@ import express from "express"
 import cors from "cors"
 import { router } from "./routes";
 import db from "./config/mongo"
-import { getRegistros, getRegistro, updateRegistro, deleteRegistro } from "./services/registro";
+import { eliminarRegistro, modificarRegistro , crearRegistro} from "./services/Funciones"
+
 //const puerto por el cual va a funcionar la aplicacion (el de el archivo env) 
 //En el caso de que no funcione por ese puerto el 3001
 const PORT = process.env.PORT || 3001;
@@ -20,27 +21,6 @@ app.use(router);
 db().then(() => console.log("Conexion Ready"));
 app.listen(PORT, () => console.log(`Listo por el puerto ${PORT}`) );
 
-const imprimirRegistros = async () => {
-    try {
-        const cars = await getRegistros();
-        console.log('Lista de Registros:', cars);
-    } catch (error) {
-        console.error('Error al obtener la lista de Registros:', error);
-    }
-};
 
-const readline = require('readline').createInterface({
-    input: process.stdin,
-    output: process.stdout
-  });
 
-const eliminarRegistro = async () => {
-    readline.question('Ingrese el id a eliminar', (id: String) => {
-        console.log(`Hey there ${id}!`);
-        readline.close();
-      });
-    
-
-} 
-
-imprimirRegistros();
+  
