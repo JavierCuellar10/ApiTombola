@@ -1,9 +1,9 @@
 import {Schema, Types, Model, model} from "mongoose";
-import { Registro } from "../interfaces/registro.interface";
+import { Configuracion } from "../interfaces/configuracion.interfase";
 import { text } from "express";
 //Es un esquema(representacion de propiedades que se guardan en db) 
 //y hacemos implementación de la interface de car
-const ItemSchema = new Schema<Registro>(
+const ItemSchema = new Schema<Configuracion>(
     //Se crean dos objetos
     {
         //datos importados de Car
@@ -14,17 +14,12 @@ const ItemSchema = new Schema<Registro>(
             index: true,
             maxlength: 1000,
         },
-        descripcion: {
+        valor: {
             
             type: String,
             //validación
+            required:true,
             maxlength: 1000,
-        },
-        opcional1: {
-            type: String,
-        },
-        opcional2:{
-            type: String,
         },
 
     },
@@ -38,5 +33,5 @@ const ItemSchema = new Schema<Registro>(
 
 //vamos a implementar ItemSchema en itemModel 
 //model recibe string osea el nombre y el esquema
-const RegistroModel = model('registros', ItemSchema);
-export default RegistroModel;
+const ConfiguracionModel = model('configuracion', ItemSchema);
+export default ConfiguracionModel;

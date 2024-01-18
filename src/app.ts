@@ -13,6 +13,9 @@ const app = express();
 //Aquí le decimos a la aplicacion que haga uso de los cors
 //estos cors es para evitar el problema del origen cruzado de recursos
 //osea dejar que un dominio use tu API
+
+//yap
+
 app.use(cors());
 //La app hace uso del json en express
 app.use(express.json());

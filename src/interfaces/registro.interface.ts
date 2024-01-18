@@ -1,13 +1,13 @@
-// Define la interfaz Car que describe la estructura de un objeto Car
+// Define la interfaz Registro y se configura sus atributos
 export interface Registro {
-    identificacion: string;
-    // Propiedad que representa el color del automóvil (cadena de texto)
-    descripcion: string;
+    identificacion : string;
+    // Propiedad de registro Descripcion
+    descripcion : string;
 
-    // Propiedad que representa el tipo de combustible del automóvil (gasolina o eléctrico)
-    opcional1: string;
+    // Propiedad de registro Opcional1
+    opcional1 : string;
 
-    // Propiedad que representa el año de fabricación del automóvil (número entero)
-    opcional2: string;
+    // Propiedad de registro Opcional2
+    opcional2 : string;
 
 }
