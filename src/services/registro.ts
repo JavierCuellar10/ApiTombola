@@ -12,13 +12,20 @@ const insertRegistro = async (registro : Registro) =>{
   return responseInsert;
 };
 
-//Función asincrona para obtener un carro por el id
-const getRegistro = async(id:string) => {
-    //Conectamos la constante para obtener directamente desde la bd
-    //y la buscamos por su id
-    const responseRegistro = await RegistroModel.findOne({_id: id});
-    return responseRegistro;
-}
+const getRegistro = async (id: string) => {
+  // Buscar el registro por su id
+  const registros = await RegistroModel.find({});
+ 
+  const indexEncontrado = registros.findIndex(registro => registro._id.toString() === id);
+  
+  const indiceverdadero = indexEncontrado + 1
+
+  const indiceString = indiceverdadero.toString()
+
+ 
+    return indiceString; 
+};
+
 
 //Función asincrona para obtener todos los items
 const getRegistros = async() => {

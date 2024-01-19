@@ -12,7 +12,7 @@ router.get("/ObtenerTodos", getItems);
 //Aqui para obtener item registro con configuracion
 router.get("/ObtenerRegistroConf", getItemconConf);
 //Aqui para obtener un item
-router.get("/Obtener:id", getItem);
+router.get("/Obtener/:id", getItem);
 //Para postear un item osea post
 router.post("/Crear", postItem);
 //actualizar un item o cambiarle algo
