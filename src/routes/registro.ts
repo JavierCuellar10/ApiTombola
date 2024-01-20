@@ -16,9 +16,9 @@ router.get("/Obtener/:id", getItem);
 //Para postear un item osea post
 router.post("/Crear", postItem);
 //actualizar un item o cambiarle algo
-router.put("/Actualizar:id", updateItem);
+router.put("/Actualizar/:id", updateItem);
 //Para borrar un item :)
-router.delete("/Eliminar:id", deleteItem);
+router.delete("/Eliminar/:id", deleteItem);
 
 
 
