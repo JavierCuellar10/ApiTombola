@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { Request, Response} from 'express';
 import path from "path";
-import { deleteItem, getItem, getItems, postItem, updateItem, getItemconConf} from "../controlles/registro";
+import { deleteItem, getItem, getItems, postItem, updateItem, getItemconConf,postItems  } from "../controlles/registro";
 
 //La constante Router es el manejador de rutas de express
 //con las funciones basicas de api rest(post,get,update,delete)
@@ -13,6 +13,7 @@ router.get("/ObtenerTodos", getItems);
 router.get("/ObtenerRegistroConf", getItemconConf);
 //Aqui para obtener un item
 router.get("/Obtener/:id", getItem);
+router.post("/CrearTodos", postItems);
 //Para postear un item osea post
 router.post("/Crear", postItem);
 //actualizar un item o cambiarle algo

@@ -2,7 +2,7 @@
 import { Request, Response, response } from 'express';
 import dbConnect from '../config/mongo'; // Importa la configuración de la conexión a la base de datos
 import { handleHtttp } from '../utils/error.handle'; // Importa una función para manejar errores HTTP
-import { insertRegistro, getRegistro, getRegistros, updateRegistro, deleteRegistro, getRegistroconConfiguracion} from '../services/registro';
+import { insertRegistro, getRegistro, getRegistros, updateRegistro, deleteRegistro, getRegistroconConfiguracion, insertRegistros} from '../services/registro';
 
 // Función para obtener un elemento por ID
 //Hay dos formas de obtener el id si esta asi req: Request
@@ -86,6 +86,15 @@ const postItem = async ({ body }: Request, res: Response) => {
 };
 
 
+const postItems = async ({ body }: Request, res: Response) => {
+    try {
+      const responseItems = await insertRegistros(body); // insertRegistros en lugar de insertRegistro
+      res.send(responseItems);
+    } catch (e) {
+      handleHtttp(res, 'ERROR_POST_REGISTROS', e);
+    }
+  };
+
 // Función para eliminar un elemento por ID
 const deleteItem = async ({params}: Request, res: Response) => {
     try {
@@ -102,4 +111,4 @@ const deleteItem = async ({params}: Request, res: Response) => {
 };
 
 // Exporta todas las funciones como parte del módulo
-export { getItem, getItems, updateItem, postItem, deleteItem, getItemconConf };
+export { getItem, getItems, updateItem, postItem, deleteItem, getItemconConf,postItems };

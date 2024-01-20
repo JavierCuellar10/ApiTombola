@@ -12,6 +12,12 @@ const insertRegistro = async (registro : Registro) =>{
   return responseInsert;
 };
 
+const insertRegistros = async (configuraciones: Registro) =>{
+  const responseInsert = await ConfiguracionModel.insertMany(configuraciones)
+  //la respuesta la retornamos
+  return responseInsert;
+};
+
 const getRegistro = async (id: string) => {
   console.log(`Buscando configuración con identificación: ${id}`);
     
@@ -105,4 +111,4 @@ const getRegistroconConfiguracion = async() => {
 
 
 
-export { insertRegistro, getRegistro, getRegistros, updateRegistro, deleteRegistro,getRegistroconConfiguracion };
+export { insertRegistro, getRegistro, getRegistros, updateRegistro, deleteRegistro,getRegistroconConfiguracion,insertRegistros };
