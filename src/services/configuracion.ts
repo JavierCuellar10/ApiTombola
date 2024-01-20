@@ -7,8 +7,7 @@ import ConfiguracionModel from "../models/configuracion";
 //Recibimos los datos que deben cumplir con la interfaz Configuracion 
 //y los insertamos en la base de datos
 const insertConfiguracion = async (configuracion : Configuracion) =>{
-    const documentos = Array(5000).fill(configuracion)
-    const responseInsert = await ConfiguracionModel.insertMany(documentos)
+    const responseInsert = await ConfiguracionModel.create(configuracion)
     //la respuesta la retornamos
     return responseInsert;
 };

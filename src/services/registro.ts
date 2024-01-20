@@ -13,17 +13,12 @@ const insertRegistro = async (registro : Registro) =>{
 };
 
 const getRegistro = async (id: string) => {
-  // Buscar el registro por su id
-  const registros = await RegistroModel.find({});
- 
-  const indexEncontrado = registros.findIndex(registro => registro._id.toString() === id);
-  
-  const indiceverdadero = indexEncontrado + 1
-
-  const indiceString = indiceverdadero.toString()
-
- 
-    return indiceString; 
+  console.log(`Buscando configuración con identificación: ${id}`);
+    
+  //Conectamos la constante para obtener directamente desde la bd
+  //y la buscamos por su id
+  const responseConfiguracion = await ConfiguracionModel.findOne({_id: id});
+  return responseConfiguracion;
 };
 
 
