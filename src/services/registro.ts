@@ -12,8 +12,8 @@ const insertRegistro = async (registro : Registro) =>{
   return responseInsert;
 };
 
-const insertRegistros = async (configuraciones: Registro) =>{
-  const responseInsert = await ConfiguracionModel.insertMany(configuraciones)
+const insertRegistros = async (registros: Registro) =>{
+  const responseInsert = await ConfiguracionModel.insertMany(registros)
   //la respuesta la retornamos
   return responseInsert;
 };
