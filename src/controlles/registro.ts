@@ -91,7 +91,7 @@ const postItems = async ({ body }: Request, res: Response) => {
       const responseItems = await insertRegistros(body); // insertRegistros en lugar de insertRegistro
       res.send(responseItems);
     } catch (e) {
-      handleHtttp(res, 'ERROR_POST_REGISTROS', e);
+      handleHtttp(res, 'ERROR_POST_REGISTROS_MULTIPLES', e);
     }
   };
 

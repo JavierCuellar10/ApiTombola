@@ -7,6 +7,7 @@ import ConfiguracionModel from "../models/configuracion";
 //Recibimos los datos que deben cumplir con la interfaz car 
 //y los insertamos en la base de datos
 const insertRegistro = async (registro : Registro) =>{
+  
   const responseInsert = await RegistroModel.create(registro)
   //la respuesta la retornamos
   return responseInsert;
